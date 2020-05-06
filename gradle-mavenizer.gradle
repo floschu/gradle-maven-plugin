@@ -1,9 +1,9 @@
 apply plugin: 'maven-publish'
 
 def gradlePluginVersion = project.hasProperty('mavPluginVersion') ? project.mavPluginVersion : 'master'
-apply from: "https://raw.githubusercontent.com/sky-uk/gradle-maven-plugin/${gradlePluginVersion}/utils.gradle"
-apply from: "https://raw.githubusercontent.com/sky-uk/gradle-maven-plugin/${gradlePluginVersion}/artifact-javadoc-handler.gradle"
-apply from: "https://raw.githubusercontent.com/sky-uk/gradle-maven-plugin/${gradlePluginVersion}/artifact-pom-manager.gradle"
+apply from: "https://raw.githubusercontent.com/floschu/gradle-maven-plugin/${gradlePluginVersion}/utils.gradle"
+apply from: "https://raw.githubusercontent.com/floschu/gradle-maven-plugin/${gradlePluginVersion}/artifact-javadoc-handler.gradle"
+apply from: "https://raw.githubusercontent.com/floschu/gradle-maven-plugin/${gradlePluginVersion}/artifact-pom-manager.gradle"
 
 project.afterEvaluate {
     publishing {
@@ -18,11 +18,11 @@ project.afterEvaluate {
                     artifact sourcesJar
                     artifact javadocJar
                 }
-                
+
                 decoratePom(pom)
             }
         }
-        
+
         repositories {
             def isToRemoteRepo = getBooleanProperty("mavPublishToRemoteRepo")
             def isToInternalRepo = getBooleanProperty("mavPublishToInternalRepo")
